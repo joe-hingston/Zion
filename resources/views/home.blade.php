@@ -8,7 +8,34 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+
+                    @if (Session::has('flash-message'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('flash-message')}}
+                    </div>
+                    @endif
+
+                    <ul class="list-group">
+
+                        @foreach (Auth::user()->heroes as $hero)
+                            <li class="list-group-item">
+
+                                <form action="{{ URL::route('hero.destroy',$hero['id']) }}" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <button>Delete</button>
+                                </form>
+
+                                <span class="badge">{{ $hero->faction->name }} </span>
+                                <a href=" {{route('hero.index')}}/{{$hero->id}}" >{{ $hero->hero_name }} </a>
+                            </li>
+
+
+                        @endforeach
+                    </ul>
+
+                    <a href="/hero/create">Create a hero!</a>
+
                 </div>
             </div>
         </div>

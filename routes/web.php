@@ -11,10 +11,24 @@
 |
 */
 
+use App\Hero;
+use App\HeroShip;
+use App\User;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('hero', 'HeroController');
+
+Route::get('test', function(){
+
+   $heroship = HeroShip::find(3);
+
+    dd ($heroship->ship);
+
+});
