@@ -29,9 +29,7 @@
                                 <div class="col-md-6">
 
                                     <select class="form-control" name="hero_gender" id ="hero_gender">
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="mayonnaise">Whatever you want me to be baby</option>
+                                    @include('static.genderlist')
                                     </select>
 
                                     @if ($errors->has('hero_gender'))
