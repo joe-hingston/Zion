@@ -18,6 +18,9 @@ class CreateFactionsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('modflag')->default(1);
+            $table->integer('startingLat')->nullable();
+            $table->integer('startingLong')->nullable();
+            $table->integer('ship_id')->nullable();
             $table->timestamps();
         });
     }

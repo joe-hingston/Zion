@@ -21,6 +21,7 @@ class CreateHeroesTable extends Migration
             $table->integer('faction_id')->nullable();
             $table->integer('hero_clan_id')->nullable();
             $table->integer('hero_experience')->default(0);
+            $table->string('hero_latlong')->nullable();
             $table->timestamps();
         });
     }

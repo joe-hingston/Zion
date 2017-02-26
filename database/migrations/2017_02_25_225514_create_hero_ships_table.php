@@ -18,6 +18,7 @@ class CreateHeroShipsTable extends Migration
             $table->integer('ship_id');
             $table->integer('hero_id');
             $table->string('hero_ship_name');
+            $table->string('stats');
             $table->timestamps();
         });
     }

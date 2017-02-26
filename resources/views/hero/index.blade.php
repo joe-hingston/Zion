@@ -30,9 +30,6 @@
                             </li>
 
                     </ul>
-
-                    {{ dd($hero->heroships) }}
-
                 </div>
             </div>
         </div>

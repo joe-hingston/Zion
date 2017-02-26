@@ -1,6 +1,7 @@
 <?php
 
 use App\Ship;
+use App\ShipUpgrade;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ShipTableSeeder::class);
         $this->call(FactionTableSeeder::class);
         $this->call(HeroTableSeeder::class);
+        $this->call(UpgradeSeederTable::class);
 
 
         DB::table('users')->insert([

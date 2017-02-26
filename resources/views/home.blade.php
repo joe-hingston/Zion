@@ -27,7 +27,7 @@
                                 </form>
 
                                 <span class="badge">{{ $hero->faction->name }} </span>
-                                <a href=" {{route('hero.index')}}/{{$hero->id}}" >{{ $hero->hero_name }} </a>
+                                <a href=" {{route('hero.index')}}/{{$hero->id}}" >{{ $hero->hero_name }} </a> <button class="btn btn-large btn-primary">Enter Space</button>
                             </li>
 
 

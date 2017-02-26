@@ -19,6 +19,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'taers'=>$faker->numberBetween(1,1000000),
         'remember_token' => str_random(10),
     ];
 });
@@ -50,6 +51,32 @@ $factory->define(App\Ship::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\ShipUpgrade::class, function (Faker\Generator $faker) {
+
+    return [
+        'upgrade_cost' => $faker->numberBetween($min = 1, $max = 2000),
+        'upgrade_experience_cost' => $faker->numberBetween($min = 1, $max = 2000),
+        'upgrade_name' => $faker->name,
+        'upgrade_description' => $faker->text($maxNbChars = 200),
+        'upgrade_function' => $faker->numberBetween($min = 0, $max = 10),
+        'upgrade_durability' => $faker->numberBetween($min = 0, $max = 20000),
+    ];
+});
+
+
+
+
+//Schema::create('ship_upgrades', function (Blueprint $table) {
+//    $table->increments('id');
+//    $table->integer('upgrade_cost')->nullable()->unsigned();
+//    $table->integer('upgrade_experience_cost')->nullable()->unsigned();
+//    $table->string('upgrade_name');
+//    $table->text('upgrade_description');
+//    $table->integer('upgrade_function'); //item function stored as an integer
+//    $table->integer('upgrade_durability');
+//    $table->timestamps();
+//});
+//}
 
 
 
