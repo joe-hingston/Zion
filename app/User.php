@@ -31,7 +31,7 @@ class User extends Authenticatable
        return $this->hasMany(Hero::class);
     }
 
-    public function debittaers($amount){
+    public function debittaers($amount) {
         return $this->taers - intval($amount);
     }
 

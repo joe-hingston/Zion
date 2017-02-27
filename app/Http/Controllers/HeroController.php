@@ -134,4 +134,6 @@ class HeroController extends Controller
         return  redirect()->back()
             ->with('flash-message','Your hero has been killed, RIP');
     }
+
+
 }

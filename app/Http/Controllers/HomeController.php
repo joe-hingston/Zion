@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\ShipUpgrade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,35 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function shop(){
+        $taers = Auth::user()->taers;;
+        $storeitems = ShipUpgrade::all();
+        return view('store.index', compact('storeitems', 'taers'));
+    }
+
+    public function purchaseitem(Request $request){
+        $user = Auth::user();
+
+        $item = ShipUpgrade::find($request->_item_id);
+
+        //check that the user has enough funds
+        if($user->taers<$item->upgrade_cost){
+            return redirect()->route('shop')
+                ->with('flash-message', 'Your so poor man, stop it');
+            //return to previous view with session flash
+        }
+
+        $taers = $user->debittaers($item->upgrade_cost);
+        $user->taers = $taers;
+        $user->save();
+
+        //insert item into user inventory
+
+        //return back to the shop with a session flash
+        return redirect()->route('shop')
+            ->with('flash-message', 'You purchased it mo');
+
     }
 }

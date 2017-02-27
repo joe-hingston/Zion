@@ -25,10 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('hero', 'HeroController');
 
-Route::get('test', function(){
+Route::get('test', 'HomeController@shop')->name('shop');
 
-   $heroship = HeroShip::find(3);
-
-    dd ($heroship->ship);
-
-});
+Route::post('purchaseshipupgrade', 'HomeController@purchaseitem');
