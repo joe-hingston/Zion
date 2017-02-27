@@ -49,23 +49,22 @@ class HeroController extends Controller
         ]);
 
         // check for number of heroes
-        if (Auth::user()->heroes()->count() > 10) {
+        if (Auth::user()->heroes->count() > 10) {
             return redirect()->route('home')
                 ->with('flash-message', 'chill bro');
         }
 
         // get faction
-        $faction = Faction::find($request->faction_id);
+        $faction = Faction::find($request->faction_id);s
 
         // set current player location
-        $position = [];
         $startingposition = [$faction->name, $faction->startingLat, $faction->startingLong];
 
         $hero = new Hero;
         $hero->hero_name = $request->hero_name;
         $hero->faction_id = $request->faction_id;
         $hero->hero_gender = $request->hero_gender;
-        $hero->hero_latlong = implode('-', array_merge($position, $startingposition));
+        $hero->hero_latlong = implode('-', $startingposition);
         $hero->user_id = Auth::id();
 
         $hero->save();
@@ -79,7 +78,7 @@ class HeroController extends Controller
             'ship_colour' => $defaultShip->ship_colour,
         ];
 
-       $hero->heroships()->create([
+        $hero->heroships()->create([
             'ship_id' => $defaultShip->id,
             'hero_ship_name' => 'Jolly Roger',
             'stats' => serialize($stats)
