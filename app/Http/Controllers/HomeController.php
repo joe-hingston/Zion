@@ -55,4 +55,11 @@ class HomeController extends Controller
             ->with('flash-message', 'You purchased it mo');
 
     }
+
+    /**
+    * sample method for upgrading a ship
+    */
+    public function installUpgrade(HeroShip $ship, ShipUpgrade $upgrade) {
+        $ship->upgrades()->attach($upgrade->id);
+    }
 }
