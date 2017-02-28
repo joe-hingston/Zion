@@ -9,7 +9,7 @@
                 {{Session::get('flash-message')}}
             </div>
         @endif
-        <h3>You currently have {{$taers}} Taers.</h3>
+        <h3>You currently have {{ Auth::user()->taers }} Taers.</h3>
         <h2>Shop Items</h2>
         <table class="table table-striped">
             <thead>

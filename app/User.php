@@ -32,7 +32,9 @@ class User extends Authenticatable
     }
 
     public function debittaers($amount) {
-        return $this->taers - intval($amount);
+        $this->taers - intval($amount);
+
+        return $this;
     }
 
 

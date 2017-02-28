@@ -29,9 +29,9 @@ class HomeController extends Controller
     }
 
     public function shop(){
-        $taers = Auth::user()->taers;;
+        // $taers = Auth::user()->taers;
         $storeitems = ShipUpgrade::all();
-        return view('store.index', compact('storeitems', 'taers'));
+        return view('store.index', compact('storeitems'));
     }
 
     public function purchaseitem(Request $request){
@@ -46,9 +46,7 @@ class HomeController extends Controller
             //return to previous view with session flash
         }
 
-        $taers = $user->debittaers($item->upgrade_cost);
-        $user->taers = $taers;
-        $user->save();
+        $user->debittaers($item->upgrade_cost)->save();
 
         //insert item into user inventory
 
