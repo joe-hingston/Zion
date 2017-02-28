@@ -55,7 +55,7 @@ class HeroController extends Controller
         }
 
         // get faction
-        $faction = Faction::find($request->faction_id);s
+        $faction = Faction::find($request->faction_id);
 
         // set current player location
         $startingposition = [$faction->name, $faction->startingLat, $faction->startingLong];
