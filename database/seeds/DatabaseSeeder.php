@@ -25,6 +25,13 @@ class DatabaseSeeder extends Seeder
             'name'=>'Joe',
             'email' => 'joe.hingston@outlook.com',
             'password' => '$2y$10$xhZIafmjrSoVMBXuomzO4e/pcmSzn/hzox.YJ7S0Gbki0GRciA2Qu',
+            'taers'=>2000,
+        ]);
+        DB::table('users')->insert([
+            'name'=>'Aaron',
+            'email' => 'afletcher53@gmail.com',
+            'password' => '$2y$10$zD4wqD1BdkXJ/OaHQRGofu2Tvsb8Hm2B55PkSnFwi6NvDPJElaRR2',
+            'taers'=>2000,
         ]);
         DB::table('heroes')->insert([
             'user_id'=>51,
@@ -36,12 +43,6 @@ class DatabaseSeeder extends Seeder
             'hero_name'=>'RandomLetters2',
             'faction_id' =>1
         ]);
-        DB::table('users')->insert([
-            'name'=>'Aaron',
-            'email' => 'afletcher53@gmail.com',
-            'password' => '$2y$10$xhZIafmjrSoVMBXuomzO4e/pcmSzn/hzox.YJ7S0Gbki0GRciA2Qu',
-        ]);
-
 
 
     }

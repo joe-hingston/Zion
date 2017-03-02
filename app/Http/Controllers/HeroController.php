@@ -130,9 +130,7 @@ class HeroController extends Controller
     public function destroy($id)
     {
         Hero::destroy($id);
-        return  redirect()->back()
+        return redirect()->back()
             ->with('flash-message','Your hero has been killed, RIP');
     }
-
-
 }
